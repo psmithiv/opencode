@@ -198,10 +198,10 @@ export async function CopilotAuthPlugin(input: PluginInput): Promise<Hooks> {
               method: "POST",
               headers: {
                 Accept: "application/json",
-                "Content-Type": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
                 "User-Agent": `opencode/${Installation.VERSION}`,
               },
-              body: JSON.stringify({
+              body: new URLSearchParams({
                 client_id: CLIENT_ID,
                 scope: "read:user",
               }),
@@ -228,10 +228,10 @@ export async function CopilotAuthPlugin(input: PluginInput): Promise<Hooks> {
                     method: "POST",
                     headers: {
                       Accept: "application/json",
-                      "Content-Type": "application/json",
+                      "Content-Type": "application/x-www-form-urlencoded",
                       "User-Agent": `opencode/${Installation.VERSION}`,
                     },
-                    body: JSON.stringify({
+                    body: new URLSearchParams({
                       client_id: CLIENT_ID,
                       device_code: deviceData.device_code,
                       grant_type: "urn:ietf:params:oauth:grant-type:device_code",
